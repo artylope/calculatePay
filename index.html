@@ -3,17 +3,14 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <h1>Guess a number between 1 to 100</h1>
-    <input class="starter" id="input" placeholder="number"/>
+    <h1>Wage Calculator</h1>
+    <input class="starter" id="input" placeholder="Hours Worked"/>
     <h2>output:</h2>
     <p class="starter" id="output"></p>
-    <div><strong>Total Games Played:</strong><span id="games-played"></span></div>
-    <div><strong>Games Won</strong><span id="games-won">0</span></div>
-    <div><strong>Games Lost</strong><span id="games-lost">0</span></div>
     <script>
       document.querySelector('#input').addEventListener('change', function(event){
-        var currentInput = event.target.value;
-        inputHappened(currentInput)
+        var hoursWorked = event.target.value;
+        calculatePay(hoursWorked)
       });
 
       var display = function( data ){
