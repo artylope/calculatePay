@@ -1,3 +1,6 @@
+var gamesPlayed = 0;
+var gamesWon = 0;
+var gamesLose = 0;
 //generate a randomNumber between 1 to 100;
 var randomSecretNumber = Math.floor(Math.random()*100) + 1;
 console.log("secret number is " + randomSecretNumber);
@@ -11,20 +14,28 @@ console.log("secret number is " + randomSecretNumber);
 
 var hasWon = function(guessedNumber, secretNumber){
   if (guessedNumber === secretNumber){
-    display("You won")
+    display("You won");
+    gamesWon ++;
+    console.log("Games Won " + gamesWon);
   } else if (guessedNumber < secretNumber){
-    display("Try again. Number is higher")
+    gamesLose ++;
+    console.log("Games Lose " + gamesLose);
+    display("Try again. Number is higher");
   } else {
-    display("Try again. Number is lower")
+    display("Try again. Number is lower");
+    gamesLose ++;
+    console.log("Games Lose " + gamesLose);
   }
 };
 
 var inputHappened = function(currentInput){
   //check if number
-  console.log(currentInput);
-  console.log(typeof (currentInput));
+  // console.log(currentInput);
+  // console.log(typeof (currentInput));
   checkIfNumber(currentInput);
   if (checkIfNumber(currentInput) === true){
+    gamesPlayed ++;
+    console.log("Games Played " + gamesPlayed);
     currentInput = parseInt(currentInput);
     hasWon(currentInput,randomSecretNumber);
     if(currentInput>100 || currentInput === 0){
@@ -37,10 +48,10 @@ var inputHappened = function(currentInput){
 
 var checkIfNumber = function(input) {
     if (!isNaN(input) === true) {
-      console.log(input + " is a number");
+      // console.log(input + " is a number");
       return true;
     } else {
-      console.log(input + " is not a number");
+      // console.log(input + " is not a number");
       return false;
     }
   };
