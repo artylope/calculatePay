@@ -1,6 +1,6 @@
 var gamesPlayed = 0;
 var gamesWon = 0;
-var gamesLose = 0;
+var gamesLost = 0;
 //generate a randomNumber between 1 to 100;
 var randomSecretNumber = Math.floor(Math.random()*100) + 1;
 console.log("secret number is " + randomSecretNumber);
@@ -16,15 +16,15 @@ var hasWon = function(guessedNumber, secretNumber){
   if (guessedNumber === secretNumber){
     display("You won");
     gamesWon ++;
-    console.log("Games Won " + gamesWon);
+    document.getElementById('games-won').textContent = gamesWon;
   } else if (guessedNumber < secretNumber){
-    gamesLose ++;
-    console.log("Games Lose " + gamesLose);
+    gamesLost ++;
+    document.getElementById('games-lost').textContent = gamesLost;
     display("Try again. Number is higher");
   } else {
     display("Try again. Number is lower");
-    gamesLose ++;
-    console.log("Games Lose " + gamesLose);
+    gamesLost ++;
+    document.getElementById('games-lost').textContent = gamesLost;
   }
 };
 
@@ -35,7 +35,7 @@ var inputHappened = function(currentInput){
   checkIfNumber(currentInput);
   if (checkIfNumber(currentInput) === true){
     gamesPlayed ++;
-    console.log("Games Played " + gamesPlayed);
+    document.getElementById('games-played').textContent = gamesPlayed;
     currentInput = parseInt(currentInput);
     hasWon(currentInput,randomSecretNumber);
     if(currentInput>100 || currentInput === 0){
